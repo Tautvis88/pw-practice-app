@@ -1,19 +1,48 @@
-1. Prerequisites (already installed):
-   1. Node.js
-   2. Git
-   3. IDE (Visual Studio Code or Webstorm or IntelliJ Ultimate)
-   4. Playwright plugin for IDE (Test Automation for IntelliJ, Playwright Test for VSCode)
-   5. Playwright CRX plugin for Chrome browser (optional)
-2. Created folders C:\UdemyCourses\Playwright
-3. Intellij → New Project from Version Control System → https://github.com/bondar-artem/pw-practice-app.git → C:\UdemyCourses\Playwright\pw-practice-app
-4. Intellij → renamed 'master' branch to 'main'
-5. Create empty GitHub repository "pw-practice-app": https://github.com/Tautvis88/pw-practice-app
-   1. Steps 4-6 were done using the advices from this link:: https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github
-6. Intellij → Main Menu → Git → Manage Remotes... changed origin URL to my repo: https://github.com/Tautvis88/pw-practice-app
-7. Push the main branch to my repo: right mouse clicks on the main branch and select Push... 
-8. Created NOTES.md file and described all performed steps.
-9. Run `npm install --force` ('npm install' without --force didn't work - got many npm errors)
-10. Run `npm start` to run web application on browser http://localhost:4200/
-11. Run `npm init playwright@latest --force`, all newly created files added to Git versioning tracking.
-12. **_example.spec.ts_** and **_tests-examples/demo-todo-app.spec.ts_** files were not deleted (although during the Udemy Playwright course the lecturer deleted them)
+#### PREREQUISITES
 
+1. Node.js
+2. Git
+3. IDE _(Visual Studio Code or Webstorm or IntelliJ Ultimate)_
+4. Playwright plugin for IDE _(**Test Automation for IntelliJ**, Playwright Test for VSCode)_
+5. **Playwright CRX** plugin for Chrome browser _(optional)_
+
+---
+
+#### PROJECT CREATION
+
+1. Created folders _C:\UdemyCourses\Playwright_
+2. Intellij → New Project from Version Control System → https://github.com/bondar-artem/pw-practice-app.git →   
+   _(C:\UdemyCourses\Playwright\pw-practice-app)_
+3. IntelliJ → renamed `master` branch to `main`
+4. Create empty GitHub repository `pw-practice-app`: https://github.com/Tautvis88/pw-practice-app
+   > Steps 4–6 were done using the advice from this link:  
+   >> https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github
+5. Intellij → Main Menu → Git → Manage Remotes... changed origin URL to my repo: https://github.com/Tautvis88/pw-practice-app
+6. Push the main branch to my repo: _right mouse clicks on the main branch and select Push..._
+
+---
+
+#### PLAYWRIGHT INSTALLATION
+
+1. Created `NOTES.md` file and described all performed steps.
+2. Run `npm install --force` ('npm install' without --force didn't work - got many npm errors) to install node_modules
+3. Run `npm start` to run web application on browser http://localhost:4200/
+4. Run `npm init playwright@latest --force` to create playwright framework files. All newly created files added to Git versioning tracking.
+5. **_example.spec.ts_** and **_tests-examples/demo-todo-app.spec.ts_** files were not deleted  
+   (although during the Udemy Playwright course the lecturer deleted them)
+
+---
+
+### TEST EXECUTION WITH CLI
+
+1. Commented webkit _(Safari)_ browser project in `playwright.config.ts` because I don't have a Safari browser.
+
+| No. | Command                                                  | Description                                                          |
+|-----|----------------------------------------------------------|----------------------------------------------------------------------|
+| 1.  | `npx playwright test`                                    | to run all tests from **_tests_** folder (no browser UI)             |
+| 2.  | `npx playwright test --project=chromium`                 | to run tests only on Chrome browser (**_headless_** - no browser UI) |
+| 3.  | `npx playwright test --project=chromium --headed`        | to run tests only on Chrome (**_headed_** - with browser UI)         |
+| 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                               |
+| 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test           |
+
+---
