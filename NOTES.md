@@ -45,4 +45,48 @@
 | 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                               |
 | 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test           |
 
+``` bash
+npx playwright test
+```
+
+``` bash
+npx playwright test --project=chromium
+```
+
+``` bash
+npx playwright test --project=chromium --headed
+```
+
+``` bash
+npx playwright test example.spec.ts --project=chromium
+```
+
+``` bash
+npx playwright test -g "has title" --project=chromium
+```
+
+2. To skip a specific test, you need to add `test.skip()`.
+3. To run a specific test, you need to add `test.only()`.
+
 ---
+
+### TEST EXECUTION WITH UI
+
+1. You can run e2e playwright tests from IntelliJ Ultimate using `Test Automation` plugin.  
+   You need to click on a green arrow/triangle next to the test() or test.describe().
+
+
+2. To run tests using the `Playwright UI runner`, you need to run this command:
+``` bash
+npx playwright test --ui
+```
+#### Disadvantages:
+For each completed step, `Playwright UI runner` takes a screenshot of your application and displays them in the UI window.  
+However, they aren't real pages, so you can't navigate them like you would in a regular browser.
+
+#### Advantages:
+You can use `Pick locator` button, click on the element in the screenshot and get locator code, for example: 
+`getByRole('link', { name: 'Get started' })`
+
+![Pick locator](img/pick-locator.png)
+
