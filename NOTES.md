@@ -90,3 +90,16 @@ You can use `Pick locator` button, click on the element in the screenshot and ge
 
 ![Pick locator](img/pick-locator.png)
 
+---
+
+### TRACE VIEW AND DEBUG
+
+You can't run `Playwright UI runner` on the CI server (pipeline). But you can turn on the `tracing mode` using this command:
+``` bash
+npx playwright test --project=chromium --trace on
+```
+In the `playwright-report` folder, Playwright will create `trace` folder and `index.html` file.  
+Open this `index.html` file on browser, click on the test, then on the `Traces` screenshot, and you will open `Playwright UI runner`.  
+By default `trace` is set to `on-first-retry` in the `playwright.config.ts` file. You can change it to `on`, `off` etc.
+See more here: [Recording a trace on CI](https://playwright.dev/docs/trace-viewer#recording-a-trace-on-ci)
+
