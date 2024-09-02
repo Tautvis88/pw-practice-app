@@ -67,6 +67,8 @@ npx playwright test -g "has title" --project=chromium
 
 2. To skip a specific test, you need to add `test.skip()`.
 3. To run a specific test, you need to add `test.only()`.
+4. To skip a specific test suite, you need to add `test.describe.skip()`.
+5. To run a specific test suite, you need to add `test.describe.only()`.
 
 ---
 
@@ -117,5 +119,72 @@ While you are debugging, you can hover your mouse arrow on variables to see what
 ---
 
 ### TESTS STRUCTURE
-
 Check the test file `firstTest.spec.ts`. 
+```ts
+test("the first test", async ({ page }) => {
+  // async because await can be used only in asynchronous functions
+
+  /* { page } is one of Playwright fixtures. We also have { browser } fixture.
+   * { page } fixture is like blank page of the browser.
+   * To run the test, we need to open a new page of the browser,
+   * and then we can do with this page whatever we want. */
+
+  // FIRST RUN the application with "npm start"
+  await page.goto("http://localhost:4200/");
+  // await because method .goto returns a Promise
+  await page.getByText("Forms").click();
+  await page.getByText("Form Layouts").click();
+});
+```
+
+---
+
+### HOOKS and FLOW CONTROL
+Check the test file `firstTest.spec.ts`.
+```ts
+test.beforeAll(async ({ page }) => {  // executed just ONCE in the ENTIRE test file before all tests
+});
+
+test.beforeEach(async ({ page }) => {
+});
+
+test.afterEach() // try to avoid using this (not a good practice)
+test.afterAll()  // try to avoid using this (not a good practice)
+```
+
+```ts
+test.beforeEach(async ({ page }) => {
+  await page.goto("http://localhost:4200/");
+  // this beforeEach will be executed before EACH test (before "Form Layouts", before "Datepicker", before "Chart Layouts", before "Chartpicker").
+});
+
+test.describe('suite1', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.getByText("Forms").click();
+    // this beforeEach will be executed only before "Form Layouts" and before "Datepicker".
+  });
+
+  test("the first test", async ({ page }) => {
+    await page.getByText("Form Layouts").click();
+  });
+
+  test("navigate to datepicker page", async ({ page }) => {
+    await page.getByText("Datepicker").click();
+  });
+})
+
+test.describe('suite2', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.getByText("Charts").click();
+    // this beforeEach will be executed only before "Chart Layouts" and before "Chartpicker".
+  });
+
+  test("the first test", async ({ page }) => {
+    await page.getByText("Chart Layouts").click();
+  });
+
+  test("navigate to datepicker page", async ({ page }) => {
+    await page.getByText("Chartpicker").click();
+  });
+})
+```
