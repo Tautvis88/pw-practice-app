@@ -37,13 +37,13 @@
 
 1. Commented webkit _(Safari)_ browser project in `playwright.config.ts` because I don't have a Safari browser.
 
-| No. | Command                                                  | Description                                                          |
-|-----|----------------------------------------------------------|----------------------------------------------------------------------|
-| 1.  | `npx playwright test`                                    | to run all tests from **_tests_** folder (no browser UI)             |
+| No. | Command                                                  | Description                                                              |
+|-----|----------------------------------------------------------|--------------------------------------------------------------------------|
+| 1.  | `npx playwright test`                                    | to run all tests from **_tests_** folder (no browser UI)                 |
 | 2.  | `npx playwright test --project=chromium`                 | to run tests only on Chrome browser (**_headless_** - no browser UI) |
-| 3.  | `npx playwright test --project=chromium --headed`        | to run tests only on Chrome (**_headed_** - with browser UI)         |
-| 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                               |
-| 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test           |
+| 3.  | `npx playwright test --project=chromium --headed`        | to run tests only on Chrome (**_headed_** - with browser UI)             |
+| 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                                   |
+| 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test               |
 
 ``` bash
 npx playwright test
@@ -75,7 +75,6 @@ npx playwright test -g "has title" --project=chromium
 1. You can run e2e playwright tests from IntelliJ Ultimate using `Test Automation` plugin.  
    You need to click on a green arrow/triangle next to the test() or test.describe().
 
-
 2. To run tests using the `Playwright UI runner`, you need to run this command:
 ``` bash
 npx playwright test --ui
@@ -93,9 +92,8 @@ You can use `Pick locator` button, click on the element in the screenshot and ge
 ---
 
 ### TRACE VIEW AND DEBUG
-
 You can't run `Playwright UI runner` on the CI server (pipeline). But you can turn on the `tracing mode` using this command:
-``` bash
+```bash
 npx playwright test --project=chromium --trace on
 ```
 In the `playwright-report` folder, Playwright will create `trace` folder and `index.html` file.  
@@ -103,3 +101,15 @@ Open this `index.html` file on browser, click on the test, then on the `Traces` 
 By default `trace` is set to `on-first-retry` in the `playwright.config.ts` file. You can change it to `on`, `off` etc.
 See more here: [Recording a trace on CI](https://playwright.dev/docs/trace-viewer#recording-a-trace-on-ci)
 
+#### DEBUGGER - Playwright Inspector
+This command will open `Playwright Inspector` and browser window:
+```bash
+npx playwright test --project=chromium --debug
+```
+Using `Playwright Inspect` you will be able to run your test step by step / line by line clicking **_Step over_** button.
+And all steps will be visualized in the browser window.
+
+#### DEBUGGER - IDE built-in debugger
+You can run debugger using built-in IDE debugger. You need to add a **_breakpoint_** where you want to stop your debugger,
+click on the green triangle arrow, which is next to your test line number and select `Debug` mode.
+While you are debugging, you can hover your mouse arrow on variables to see what value it holds inside.
