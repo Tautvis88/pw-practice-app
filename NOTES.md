@@ -37,13 +37,13 @@
 
 1. Commented webkit _(Safari)_ browser project in `playwright.config.ts` because I don't have a Safari browser.
 
-| No. | Command                                                  | Description                                                              |
-|-----|----------------------------------------------------------|--------------------------------------------------------------------------|
-| 1.  | `npx playwright test`                                    | to run all tests from **_tests_** folder (no browser UI)                 |
+| No. | Command                                                  | Description                                                          |
+|-----|----------------------------------------------------------|----------------------------------------------------------------------|
+| 1.  | `npx playwright test`                                    | to run all tests from **_tests_** folder (no browser UI)             |
 | 2.  | `npx playwright test --project=chromium`                 | to run tests only on Chrome browser (**_headless_** - no browser UI) |
-| 3.  | `npx playwright test --project=chromium --headed`        | to run tests only on Chrome (**_headed_** - with browser UI)             |
-| 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                                   |
-| 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test               |
+| 3.  | `npx playwright test --project=chromium --headed`        | to run tests only on Chrome (**_headed_** - with browser UI)         |
+| 4.  | `npx playwright test example.spec.ts --project=chromium` | to run only **_example.spec.ts_** file                               |
+| 5.  | `npx playwright test -g "has title" --project=chromium`  | to run a specific test "has title" by the name of the test           |
 
 ``` bash
 npx playwright test
@@ -113,3 +113,9 @@ And all steps will be visualized in the browser window.
 You can run debugger using built-in IDE debugger. You need to add a **_breakpoint_** where you want to stop your debugger,
 click on the green triangle arrow, which is next to your test line number and select `Debug` mode.
 While you are debugging, you can hover your mouse arrow on variables to see what value it holds inside.
+
+---
+
+### TESTS STRUCTURE
+
+Check the test file `firstTest.spec.ts`. 
