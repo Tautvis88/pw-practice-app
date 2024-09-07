@@ -89,7 +89,7 @@ However, they aren't real pages, so you can't navigate them like you would in a 
 You can use `Pick locator` button, click on the element in the screenshot and get locator code, for example: 
 `getByRole('link', { name: 'Get started' })`
 
-![Pick locator](img/pick-locator.png)
+![Pick locator](resources/img/pick-locator.png)
 
 ---
 
@@ -151,7 +151,6 @@ test.beforeEach(async ({ page }) => {
 test.afterEach() // try to avoid using this (not a good practice)
 test.afterAll()  // try to avoid using this (not a good practice)
 ```
-
 ```ts
 test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:4200/");
@@ -188,3 +187,51 @@ test.describe('suite2', () => {
   });
 })
 ```
+
+### DOM Terminology
+#### Check the PowerPoint presentation `23. DOM Terminology` in the `C:\UdemyCourses\Playwright\` or `resources/ppt/23. DOM Terminology.pptx`.
+![HTML Tags, Attributes](resources/img/DOM-terms-1.png)
+&nbsp;
+
+#### A `class` and `id` attributes in HTML have a special role (more important than others). `id` attribute should be unique.
+![Class, ID attributes](resources/img/DOM-terms-2.png)
+&nbsp;
+
+#### A `class` attribute can consist of more than one independent value separated by spaces:
+![Class values](resources/img/DOM-terms-3.png)
+&nbsp;
+
+#### HTML table tags: `<tbody>` - whole table, `<tr>` - table row, `<td>` - table cell/data.
+![HTML Table Tags](resources/img/DOM-terms-4.png)
+&nbsp;
+
+#### HTML text which you see in the website can be stored as a hardcoded text between the angle braces in the plain HTML file  
+#### `<td>html text between the angle braces</td>` or as a value inside the HTML attribute.
+![HTML text value](resources/img/DOM-terms-5.png)
+&nbsp;
+
+#### Parent Elements and Child Elements
+![Relations between the web elements](resources/img/DOM-terms-6.png)
+&nbsp;
+
+#### Sibling Elements
+![Sibling elements](resources/img/DOM-terms-7.png)
+&nbsp;
+
+### DOM elements SUMMARY
+* HTML DOM consists of: `HTML Tags`, `HTML Attributes` and `Attribute values`
+* `class` and `id` are also HTML attribute names
+* `class` attribute can have several values and each value is separated by space
+* HTML tags usually come in pairs of Opening `<..>` and Closing `</..>` tag. Closing tag has the same name and forward slash.
+* Value in between angle brackets (`>here<`) is a plain text.
+* Elements above the "key" web element are `Parent Elements`.
+* Elements inside the "key" web element are `Child Elements`.
+* Elements placed at the same level side by side are Sibling Elements.
+
+
+
+
+
+
+
+
