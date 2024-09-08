@@ -22,7 +22,7 @@
 
 ---
 
-#### PLAYWRIGHT INSTALLATION
+### 17. PLAYWRIGHT INSTALLATION
 
 1. Created `NOTES.md` file and described all performed steps.
 2. Run `npm install --force` ('npm install' without --force didn't work - got many npm errors) to install node_modules
@@ -33,7 +33,7 @@
 
 ---
 
-### TEST EXECUTION WITH CLI
+### 18. TEST EXECUTION WITH CLI
 
 1. Commented webkit _(Safari)_ browser project in `playwright.config.ts` because I don't have a Safari browser.
 
@@ -72,7 +72,7 @@ npx playwright test -g "has title" --project=chromium
 
 ---
 
-### TEST EXECUTION WITH UI
+### 19. TEST EXECUTION WITH UI
 
 1. You can run e2e playwright tests from IntelliJ Ultimate using `Test Automation` plugin.  
    You need to click on a green arrow/triangle next to the test() or test.describe().
@@ -93,7 +93,7 @@ You can use `Pick locator` button, click on the element in the screenshot and ge
 
 ---
 
-### TRACE VIEW AND DEBUG
+### 20. TRACE VIEW AND DEBUG
 You can't run `Playwright UI runner` on the CI server (pipeline). But you can turn on the `tracing mode` using this command:
 ```bash
 npx playwright test --project=chromium --trace on
@@ -118,7 +118,7 @@ While you are debugging, you can hover your mouse arrow on variables to see what
 
 ---
 
-### TESTS STRUCTURE
+### 21. TESTS STRUCTURE
 Check the test file `firstTest.spec.ts`. 
 ```ts
 test("the first test", async ({ page }) => {
@@ -139,7 +139,7 @@ test("the first test", async ({ page }) => {
 
 ---
 
-### HOOKS and FLOW CONTROL
+### 22. HOOKS and FLOW CONTROL
 Check the test file `firstTest.spec.ts`.
 ```ts
 test.beforeAll(async ({ page }) => {  // executed just ONCE in the ENTIRE test file before all tests
@@ -188,7 +188,9 @@ test.describe('suite2', () => {
 })
 ```
 
-### DOM Terminology
+---
+
+### 23. DOM Terminology
 #### Check the PowerPoint presentation `23. DOM Terminology` in the `C:\UdemyCourses\Playwright\` or `resources/ppt/23. DOM Terminology.pptx`.
 ![HTML Tags, Attributes](resources/img/DOM-terms-1.png)
 &nbsp;
@@ -228,6 +230,10 @@ test.describe('suite2', () => {
 * Elements inside the "key" web element are `Child Elements`.
 * Elements placed at the same level side by side are Sibling Elements.
 
+---
+
+### 24. Locator Syntax Rules
+Check the test `Locator syntax rules` in the `firstTest.spec.ts` file.
 
 
 
